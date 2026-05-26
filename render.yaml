@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hostpilot-api
+    runtime: docker
+    region: frankfurt
+    plan: free
+    branch: main
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3001"
+      - key: DB_PATH
+        value: /app/backend/data/hostpilot.db
