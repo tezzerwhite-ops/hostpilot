@@ -45,10 +45,3 @@ waitlistRouter.get('/count', (_req: Request, res: Response) => {
   const row = db.prepare('SELECT COUNT(*) as count FROM waitlist').get() as any;
   res.json({ count: row.count });
 });
-
-// DELETE /api/waitlist/:email — remove entry (admin)
-waitlistRouter.delete('/:email', (req: Request, res: Response) => {
-  const db = getDb();
-  db.prepare('DELETE FROM waitlist WHERE email = ?').run(req.params.email);
-  res.json({ success: true });
-});
